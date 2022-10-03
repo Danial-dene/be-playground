@@ -1,0 +1,377 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: String!
+  username: String!
+  password: String!
+}
+
+type DeleteManyResponse {
+  """The number of records deleted."""
+  deletedCount: Int!
+}
+
+type UpdateManyResponse {
+  """The number of records updated."""
+  updatedCount: Int!
+}
+
+type UserEdge {
+  """The node containing the User"""
+  node: User!
+
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+}
+
+"""Cursor for paging through collections"""
+scalar ConnectionCursor
+
+type PageInfo {
+  """true if paging forward and there are more records."""
+  hasNextPage: Boolean
+
+  """true if paging backwards and there are more records."""
+  hasPreviousPage: Boolean
+
+  """The cursor of the first returned record."""
+  startCursor: ConnectionCursor
+
+  """The cursor of the last returned record."""
+  endCursor: ConnectionCursor
+}
+
+type UserConnection {
+  """Paging information"""
+  pageInfo: PageInfo!
+
+  """Array of edges."""
+  edges: [UserEdge!]!
+}
+
+type UserAggregateGroupBy {
+  id: String
+  username: String
+  password: String
+}
+
+type UserCountAggregate {
+  id: Int
+  username: Int
+  password: Int
+}
+
+type UserMinAggregate {
+  id: String
+  username: String
+  password: String
+}
+
+type UserMaxAggregate {
+  id: String
+  username: String
+  password: String
+}
+
+type Todo {
+  id: Int!
+  todo: String!
+  status: Boolean!
+  user: User!
+}
+
+type TodoDeleteResponse {
+  id: Int
+  todo: String
+  status: Boolean
+  user: String
+}
+
+type TodoEdge {
+  """The node containing the Todo"""
+  node: Todo!
+
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+}
+
+type TodoConnection {
+  """Paging information"""
+  pageInfo: PageInfo!
+
+  """Array of edges."""
+  edges: [TodoEdge!]!
+}
+
+type TodoAggregateGroupBy {
+  id: Int
+  todo: String
+  status: Boolean
+}
+
+type TodoCountAggregate {
+  id: Int
+  todo: Int
+  status: Int
+}
+
+type TodoSumAggregate {
+  id: Float
+}
+
+type TodoAvgAggregate {
+  id: Float
+}
+
+type TodoMinAggregate {
+  id: Int
+  todo: String
+}
+
+type TodoMaxAggregate {
+  id: Int
+  todo: String
+}
+
+type Query {
+  user(
+    """The id of the record to find."""
+    id: String!
+  ): User
+  users(
+    """Limit or page results."""
+    paging: CursorPaging = {first: 10}
+
+    """Specify to filter the records returned."""
+    filter: UserFilter = {}
+
+    """Specify to sort results."""
+    sorting: [UserSort!] = []
+  ): UserConnection!
+  todo(
+    """The id of the record to find."""
+    id: ID!
+  ): Todo
+  todos(
+    """Limit or page results."""
+    paging: CursorPaging = {first: 10}
+
+    """Specify to filter the records returned."""
+    filter: TodoFilter = {}
+
+    """Specify to sort results."""
+    sorting: [TodoSort!] = []
+  ): TodoConnection!
+}
+
+input CursorPaging {
+  """Paginate before opaque cursor"""
+  before: ConnectionCursor
+
+  """Paginate after opaque cursor"""
+  after: ConnectionCursor
+
+  """Paginate first"""
+  first: Int
+
+  """Paginate last"""
+  last: Int
+}
+
+input UserFilter {
+  and: [UserFilter!]
+  or: [UserFilter!]
+  id: StringFieldComparison
+  username: StringFieldComparison
+  password: StringFieldComparison
+}
+
+input StringFieldComparison {
+  is: Boolean
+  isNot: Boolean
+  eq: String
+  neq: String
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  like: String
+  notLike: String
+  iLike: String
+  notILike: String
+  in: [String!]
+  notIn: [String!]
+}
+
+input UserSort {
+  field: UserSortFields!
+  direction: SortDirection!
+  nulls: SortNulls
+}
+
+enum UserSortFields {
+  id
+  username
+  password
+}
+
+"""Sort Directions"""
+enum SortDirection {
+  ASC
+  DESC
+}
+
+"""Sort Nulls Options"""
+enum SortNulls {
+  NULLS_FIRST
+  NULLS_LAST
+}
+
+input TodoFilter {
+  and: [TodoFilter!]
+  or: [TodoFilter!]
+  id: IntFieldComparison
+  todo: StringFieldComparison
+  status: BooleanFieldComparison
+}
+
+input IntFieldComparison {
+  is: Boolean
+  isNot: Boolean
+  eq: Int
+  neq: Int
+  gt: Int
+  gte: Int
+  lt: Int
+  lte: Int
+  in: [Int!]
+  notIn: [Int!]
+  between: IntFieldComparisonBetween
+  notBetween: IntFieldComparisonBetween
+}
+
+input IntFieldComparisonBetween {
+  lower: Int!
+  upper: Int!
+}
+
+input BooleanFieldComparison {
+  is: Boolean
+  isNot: Boolean
+}
+
+input TodoSort {
+  field: TodoSortFields!
+  direction: SortDirection!
+  nulls: SortNulls
+}
+
+enum TodoSortFields {
+  id
+  todo
+  status
+}
+
+type Mutation {
+  createOneUser(input: CreateOneUserInput!): User!
+  createManyUsers(input: CreateManyUsersInput!): [User!]!
+  setUserOnTodo(input: SetUserOnTodoInput!): Todo!
+  createOneTodo(input: CreateOneTodoInput!): Todo!
+  createManyTodos(input: CreateManyTodosInput!): [Todo!]!
+  updateOneTodo(input: UpdateOneTodoInput!): Todo!
+  updateManyTodos(input: UpdateManyTodosInput!): UpdateManyResponse!
+  deleteOneTodo(input: DeleteOneTodoInput!): TodoDeleteResponse!
+  deleteManyTodos(input: DeleteManyTodosInput!): DeleteManyResponse!
+}
+
+input CreateOneUserInput {
+  """The record to create"""
+  user: CreateUser!
+}
+
+input CreateUser {
+  id: String
+  username: String
+  password: String
+}
+
+input CreateManyUsersInput {
+  """Array of records to create"""
+  users: [CreateUser!]!
+}
+
+input SetUserOnTodoInput {
+  """The id of the record."""
+  id: ID!
+
+  """The id of relation."""
+  relationId: String!
+}
+
+input CreateOneTodoInput {
+  """The record to create"""
+  todo: CreateTodo!
+}
+
+input CreateTodo {
+  id: Int
+  todo: String
+  status: Boolean
+  user: String
+}
+
+input CreateManyTodosInput {
+  """Array of records to create"""
+  todos: [CreateTodo!]!
+}
+
+input UpdateOneTodoInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateTodo!
+}
+
+input UpdateTodo {
+  id: Int
+  todo: String
+  status: Boolean
+  user: String
+}
+
+input UpdateManyTodosInput {
+  """Filter used to find fields to update"""
+  filter: TodoUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateTodo!
+}
+
+input TodoUpdateFilter {
+  and: [TodoUpdateFilter!]
+  or: [TodoUpdateFilter!]
+  id: IntFieldComparison
+  todo: StringFieldComparison
+  status: BooleanFieldComparison
+}
+
+input DeleteOneTodoInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteManyTodosInput {
+  """Filter to find records to delete"""
+  filter: TodoDeleteFilter!
+}
+
+input TodoDeleteFilter {
+  and: [TodoDeleteFilter!]
+  or: [TodoDeleteFilter!]
+  id: IntFieldComparison
+  todo: StringFieldComparison
+  status: BooleanFieldComparison
+}
