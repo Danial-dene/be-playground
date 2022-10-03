@@ -8,7 +8,6 @@ export class AtJwtStrategy extends PassportStrategy(Strategy, 'at-jwt') {
   constructor() {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      ignoreExpiration: false,
       secretOrKey: jwtConstants.AtSecret,
     });
   }
