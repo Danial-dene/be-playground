@@ -13,11 +13,17 @@ export class AuthService {
   login(user: User) {
     const accessToken = this.jwtService.sign(
       { sub: user.id, username: user.username },
-      { secret: process.env.AT_SECRET },
+      {
+        secret: process.env.AT_SECRET,
+        expiresIn: 60 * 15,
+      },
     );
     const refreshToken = this.jwtService.sign(
       { sub: user.id, username: user.username },
-      { secret: process.env.RT_SECRET },
+      {
+        secret: process.env.RT_SECRET,
+        expiresIn: 60 * 60 * 24 * 7,
+      },
     );
     this.userService.saveRt(refreshToken, user.id);
     return { at: accessToken, rt: refreshToken };

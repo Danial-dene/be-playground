@@ -9,6 +9,8 @@ export class AtJwtStrategy extends PassportStrategy(Strategy, 'at-jwt') {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       secretOrKey: jwtConstants.AtSecret,
+      ignoreExpiration: false,
+      signOptions: { expiresIn: '60s' },
     });
   }
 
