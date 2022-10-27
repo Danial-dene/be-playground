@@ -1,0 +1,713 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: String!
+  username: String!
+  password: String!
+}
+
+type DeleteManyResponse {
+  """The number of records deleted."""
+  deletedCount: Int!
+}
+
+type UpdateManyResponse {
+  """The number of records updated."""
+  updatedCount: Int!
+}
+
+type UserEdge {
+  """The node containing the User"""
+  node: User!
+
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+}
+
+"""Cursor for paging through collections"""
+scalar ConnectionCursor
+
+type PageInfo {
+  """true if paging forward and there are more records."""
+  hasNextPage: Boolean
+
+  """true if paging backwards and there are more records."""
+  hasPreviousPage: Boolean
+
+  """The cursor of the first returned record."""
+  startCursor: ConnectionCursor
+
+  """The cursor of the last returned record."""
+  endCursor: ConnectionCursor
+}
+
+type UserConnection {
+  """Paging information"""
+  pageInfo: PageInfo!
+
+  """Array of edges."""
+  edges: [UserEdge!]!
+}
+
+type UserAggregateGroupBy {
+  id: String
+  username: String
+  password: String
+}
+
+type UserCountAggregate {
+  id: Int
+  username: Int
+  password: Int
+}
+
+type UserMinAggregate {
+  id: String
+  username: String
+  password: String
+}
+
+type UserMaxAggregate {
+  id: String
+  username: String
+  password: String
+}
+
+type Todo {
+  id: Int!
+  todo: String!
+  status: Boolean!
+  user: User!
+}
+
+type TodoDeleteResponse {
+  id: Int
+  todo: String
+  status: Boolean
+  user: String
+}
+
+type TodoEdge {
+  """The node containing the Todo"""
+  node: Todo!
+
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+}
+
+type TodoConnection {
+  """Paging information"""
+  pageInfo: PageInfo!
+
+  """Array of edges."""
+  edges: [TodoEdge!]!
+}
+
+type TodoAggregateGroupBy {
+  id: Int
+  todo: String
+  status: Boolean
+}
+
+type TodoCountAggregate {
+  id: Int
+  todo: Int
+  status: Int
+}
+
+type TodoSumAggregate {
+  id: Float
+}
+
+type TodoAvgAggregate {
+  id: Float
+}
+
+type TodoMinAggregate {
+  id: Int
+  todo: String
+}
+
+type TodoMaxAggregate {
+  id: Int
+  todo: String
+}
+
+type Products {
+  id: String!
+  name: String!
+  price: Float!
+}
+
+type ProductsDeleteResponse {
+  id: String
+  name: String
+  price: Float
+}
+
+type ProductsEdge {
+  """The node containing the Products"""
+  node: Products!
+
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+}
+
+type ProductsConnection {
+  """Paging information"""
+  pageInfo: PageInfo!
+
+  """Array of edges."""
+  edges: [ProductsEdge!]!
+}
+
+type ProductsAggregateGroupBy {
+  id: String
+  name: String
+  price: Float
+}
+
+type ProductsCountAggregate {
+  id: Int
+  name: Int
+  price: Int
+}
+
+type ProductsSumAggregate {
+  price: Float
+}
+
+type ProductsAvgAggregate {
+  price: Float
+}
+
+type ProductsMinAggregate {
+  id: String
+  name: String
+  price: Float
+}
+
+type ProductsMaxAggregate {
+  id: String
+  name: String
+  price: Float
+}
+
+type ProductVariation {
+  id: String!
+  name: String!
+  color: String!
+}
+
+type ProductVariationDeleteResponse {
+  id: String
+  name: String
+  color: String
+}
+
+type ProductVariationEdge {
+  """The node containing the ProductVariation"""
+  node: ProductVariation!
+
+  """Cursor for this node."""
+  cursor: ConnectionCursor!
+}
+
+type ProductVariationConnection {
+  """Paging information"""
+  pageInfo: PageInfo!
+
+  """Array of edges."""
+  edges: [ProductVariationEdge!]!
+}
+
+type ProductVariationAggregateGroupBy {
+  id: String
+  name: String
+  color: String
+}
+
+type ProductVariationCountAggregate {
+  id: Int
+  name: Int
+  color: Int
+}
+
+type ProductVariationMinAggregate {
+  id: String
+  name: String
+  color: String
+}
+
+type ProductVariationMaxAggregate {
+  id: String
+  name: String
+  color: String
+}
+
+type Query {
+  user(
+    """The id of the record to find."""
+    id: String!
+  ): User
+  users(
+    """Limit or page results."""
+    paging: CursorPaging = {first: 10}
+
+    """Specify to filter the records returned."""
+    filter: UserFilter = {}
+
+    """Specify to sort results."""
+    sorting: [UserSort!] = []
+  ): UserConnection!
+  todo(
+    """The id of the record to find."""
+    id: ID!
+  ): Todo
+  todos(
+    """Limit or page results."""
+    paging: CursorPaging = {first: 10}
+
+    """Specify to filter the records returned."""
+    filter: TodoFilter = {}
+
+    """Specify to sort results."""
+    sorting: [TodoSort!] = []
+  ): TodoConnection!
+  products(
+    """Limit or page results."""
+    paging: CursorPaging = {first: 10}
+
+    """Specify to filter the records returned."""
+    filter: ProductsFilter = {}
+
+    """Specify to sort results."""
+    sorting: [ProductsSort!] = []
+  ): ProductsConnection!
+  productVariation(
+    """The id of the record to find."""
+    id: String!
+  ): ProductVariation
+  productVariations(
+    """Limit or page results."""
+    paging: CursorPaging = {first: 10}
+
+    """Specify to filter the records returned."""
+    filter: ProductVariationFilter = {}
+
+    """Specify to sort results."""
+    sorting: [ProductVariationSort!] = []
+  ): ProductVariationConnection!
+}
+
+input CursorPaging {
+  """Paginate before opaque cursor"""
+  before: ConnectionCursor
+
+  """Paginate after opaque cursor"""
+  after: ConnectionCursor
+
+  """Paginate first"""
+  first: Int
+
+  """Paginate last"""
+  last: Int
+}
+
+input UserFilter {
+  and: [UserFilter!]
+  or: [UserFilter!]
+  id: StringFieldComparison
+  username: StringFieldComparison
+  password: StringFieldComparison
+}
+
+input StringFieldComparison {
+  is: Boolean
+  isNot: Boolean
+  eq: String
+  neq: String
+  gt: String
+  gte: String
+  lt: String
+  lte: String
+  like: String
+  notLike: String
+  iLike: String
+  notILike: String
+  in: [String!]
+  notIn: [String!]
+}
+
+input UserSort {
+  field: UserSortFields!
+  direction: SortDirection!
+  nulls: SortNulls
+}
+
+enum UserSortFields {
+  id
+  username
+  password
+}
+
+"""Sort Directions"""
+enum SortDirection {
+  ASC
+  DESC
+}
+
+"""Sort Nulls Options"""
+enum SortNulls {
+  NULLS_FIRST
+  NULLS_LAST
+}
+
+input TodoFilter {
+  and: [TodoFilter!]
+  or: [TodoFilter!]
+  id: IntFieldComparison
+  todo: StringFieldComparison
+  status: BooleanFieldComparison
+}
+
+input IntFieldComparison {
+  is: Boolean
+  isNot: Boolean
+  eq: Int
+  neq: Int
+  gt: Int
+  gte: Int
+  lt: Int
+  lte: Int
+  in: [Int!]
+  notIn: [Int!]
+  between: IntFieldComparisonBetween
+  notBetween: IntFieldComparisonBetween
+}
+
+input IntFieldComparisonBetween {
+  lower: Int!
+  upper: Int!
+}
+
+input BooleanFieldComparison {
+  is: Boolean
+  isNot: Boolean
+}
+
+input TodoSort {
+  field: TodoSortFields!
+  direction: SortDirection!
+  nulls: SortNulls
+}
+
+enum TodoSortFields {
+  id
+  todo
+  status
+}
+
+input ProductsFilter {
+  and: [ProductsFilter!]
+  or: [ProductsFilter!]
+  id: StringFieldComparison
+  name: StringFieldComparison
+  price: NumberFieldComparison
+}
+
+input NumberFieldComparison {
+  is: Boolean
+  isNot: Boolean
+  eq: Float
+  neq: Float
+  gt: Float
+  gte: Float
+  lt: Float
+  lte: Float
+  in: [Float!]
+  notIn: [Float!]
+  between: NumberFieldComparisonBetween
+  notBetween: NumberFieldComparisonBetween
+}
+
+input NumberFieldComparisonBetween {
+  lower: Float!
+  upper: Float!
+}
+
+input ProductsSort {
+  field: ProductsSortFields!
+  direction: SortDirection!
+  nulls: SortNulls
+}
+
+enum ProductsSortFields {
+  id
+  name
+  price
+}
+
+input ProductVariationFilter {
+  and: [ProductVariationFilter!]
+  or: [ProductVariationFilter!]
+  id: StringFieldComparison
+  name: StringFieldComparison
+  color: StringFieldComparison
+}
+
+input ProductVariationSort {
+  field: ProductVariationSortFields!
+  direction: SortDirection!
+  nulls: SortNulls
+}
+
+enum ProductVariationSortFields {
+  id
+  name
+  color
+}
+
+type Mutation {
+  createOneUser(input: CreateOneUserInput!): User!
+  createManyUsers(input: CreateManyUsersInput!): [User!]!
+  setUserOnTodo(input: SetUserOnTodoInput!): Todo!
+  createOneTodo(input: CreateOneTodoInput!): Todo!
+  createManyTodos(input: CreateManyTodosInput!): [Todo!]!
+  updateOneTodo(input: UpdateOneTodoInput!): Todo!
+  updateManyTodos(input: UpdateManyTodosInput!): UpdateManyResponse!
+  deleteOneTodo(input: DeleteOneTodoInput!): TodoDeleteResponse!
+  deleteManyTodos(input: DeleteManyTodosInput!): DeleteManyResponse!
+  createOneProducts(input: CreateOneProductsInput!): Products!
+  createManyProducts(input: CreateManyProductsInput!): [Products!]!
+  updateOneProducts(input: UpdateOneProductsInput!): Products!
+  updateManyProducts(input: UpdateManyProductsInput!): UpdateManyResponse!
+  deleteOneProducts(input: DeleteOneProductsInput!): ProductsDeleteResponse!
+  deleteManyProducts(input: DeleteManyProductsInput!): DeleteManyResponse!
+  createOneProductVariation(input: CreateOneProductVariationInput!): ProductVariation!
+  createManyProductVariations(input: CreateManyProductVariationsInput!): [ProductVariation!]!
+  updateOneProductVariation(input: UpdateOneProductVariationInput!): ProductVariation!
+  updateManyProductVariations(input: UpdateManyProductVariationsInput!): UpdateManyResponse!
+  deleteOneProductVariation(input: DeleteOneProductVariationInput!): ProductVariationDeleteResponse!
+  deleteManyProductVariations(input: DeleteManyProductVariationsInput!): DeleteManyResponse!
+}
+
+input CreateOneUserInput {
+  """The record to create"""
+  user: CreateUser!
+}
+
+input CreateUser {
+  id: String
+  username: String
+  password: String
+}
+
+input CreateManyUsersInput {
+  """Array of records to create"""
+  users: [CreateUser!]!
+}
+
+input SetUserOnTodoInput {
+  """The id of the record."""
+  id: ID!
+
+  """The id of relation."""
+  relationId: String!
+}
+
+input CreateOneTodoInput {
+  """The record to create"""
+  todo: CreateTodo!
+}
+
+input CreateTodo {
+  id: Int
+  todo: String
+  status: Boolean
+  user: String
+}
+
+input CreateManyTodosInput {
+  """Array of records to create"""
+  todos: [CreateTodo!]!
+}
+
+input UpdateOneTodoInput {
+  """The id of the record to update"""
+  id: ID!
+
+  """The update to apply."""
+  update: UpdateTodo!
+}
+
+input UpdateTodo {
+  id: Int
+  todo: String
+  status: Boolean
+  user: String
+}
+
+input UpdateManyTodosInput {
+  """Filter used to find fields to update"""
+  filter: TodoUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateTodo!
+}
+
+input TodoUpdateFilter {
+  and: [TodoUpdateFilter!]
+  or: [TodoUpdateFilter!]
+  id: IntFieldComparison
+  todo: StringFieldComparison
+  status: BooleanFieldComparison
+}
+
+input DeleteOneTodoInput {
+  """The id of the record to delete."""
+  id: ID!
+}
+
+input DeleteManyTodosInput {
+  """Filter to find records to delete"""
+  filter: TodoDeleteFilter!
+}
+
+input TodoDeleteFilter {
+  and: [TodoDeleteFilter!]
+  or: [TodoDeleteFilter!]
+  id: IntFieldComparison
+  todo: StringFieldComparison
+  status: BooleanFieldComparison
+}
+
+input CreateOneProductsInput {
+  """The record to create"""
+  products: CreateProducts!
+}
+
+input CreateProducts {
+  id: String
+  name: String
+  price: Float
+}
+
+input CreateManyProductsInput {
+  """Array of records to create"""
+  products: [CreateProducts!]!
+}
+
+input UpdateOneProductsInput {
+  """The id of the record to update"""
+  id: String!
+
+  """The update to apply."""
+  update: UpdateProducts!
+}
+
+input UpdateProducts {
+  id: String
+  name: String
+  price: Float
+}
+
+input UpdateManyProductsInput {
+  """Filter used to find fields to update"""
+  filter: ProductsUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateProducts!
+}
+
+input ProductsUpdateFilter {
+  and: [ProductsUpdateFilter!]
+  or: [ProductsUpdateFilter!]
+  id: StringFieldComparison
+  name: StringFieldComparison
+  price: NumberFieldComparison
+}
+
+input DeleteOneProductsInput {
+  """The id of the record to delete."""
+  id: String!
+}
+
+input DeleteManyProductsInput {
+  """Filter to find records to delete"""
+  filter: ProductsDeleteFilter!
+}
+
+input ProductsDeleteFilter {
+  and: [ProductsDeleteFilter!]
+  or: [ProductsDeleteFilter!]
+  id: StringFieldComparison
+  name: StringFieldComparison
+  price: NumberFieldComparison
+}
+
+input CreateOneProductVariationInput {
+  """The record to create"""
+  productVariation: CreateProductVariation!
+}
+
+input CreateProductVariation {
+  id: String
+  name: String
+  color: String
+}
+
+input CreateManyProductVariationsInput {
+  """Array of records to create"""
+  productVariations: [CreateProductVariation!]!
+}
+
+input UpdateOneProductVariationInput {
+  """The id of the record to update"""
+  id: String!
+
+  """The update to apply."""
+  update: UpdateProductVariation!
+}
+
+input UpdateProductVariation {
+  id: String
+  name: String
+  color: String
+}
+
+input UpdateManyProductVariationsInput {
+  """Filter used to find fields to update"""
+  filter: ProductVariationUpdateFilter!
+
+  """The update to apply to all records found using the filter"""
+  update: UpdateProductVariation!
+}
+
+input ProductVariationUpdateFilter {
+  and: [ProductVariationUpdateFilter!]
+  or: [ProductVariationUpdateFilter!]
+  id: StringFieldComparison
+  name: StringFieldComparison
+  color: StringFieldComparison
+}
+
+input DeleteOneProductVariationInput {
+  """The id of the record to delete."""
+  id: String!
+}
+
+input DeleteManyProductVariationsInput {
+  """Filter to find records to delete"""
+  filter: ProductVariationDeleteFilter!
+}
+
+input ProductVariationDeleteFilter {
+  and: [ProductVariationDeleteFilter!]
+  or: [ProductVariationDeleteFilter!]
+  id: StringFieldComparison
+  name: StringFieldComparison
+  color: StringFieldComparison
+}
