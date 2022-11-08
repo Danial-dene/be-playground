@@ -1,23 +1,23 @@
-import { ObjectType, Field } from '@nestjs/graphql';
+import { ObjectType, Field } from "@nestjs/graphql";
 import {
   BeforeInsert,
   Column,
   Entity,
   OneToMany,
   PrimaryGeneratedColumn,
-} from 'typeorm';
-import * as bcrypt from 'bcrypt';
-import 'dotenv/config';
-import { Todo } from 'src/todo/entities/todo.entity';
+} from "typeorm";
+import * as bcrypt from "bcrypt";
+import "dotenv/config";
+import { Todo } from "src/todo/entities/todo.entity";
 
-@Entity('users')
+@Entity("users")
 @ObjectType()
 export class User {
-  @PrimaryGeneratedColumn('increment')
+  @PrimaryGeneratedColumn("increment")
   @Field()
   id: string;
 
-  @Column({ unique: true })
+  @Column("varchar", { unique: true })
   @Field()
   username: string;
 
@@ -25,7 +25,7 @@ export class User {
   @Field()
   password: string;
 
-  @Column('text', { name: 'rt', nullable: true })
+  @Column("text", { name: "rt", nullable: true })
   @Field()
   rt: string;
 
@@ -37,7 +37,7 @@ export class User {
     if (this.password) {
       this.password = await bcrypt.hash(
         this.password,
-        Number(process.env.SALT_ROUNDS),
+        Number(process.env.SALT_ROUNDS)
       );
     }
   }

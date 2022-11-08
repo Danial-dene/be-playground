@@ -27,7 +27,7 @@ import { ProductVariationModule } from './products-variation/products.module';
       password: process.env.DB_PASSWORD,
       database: process.env.DB_NAME,
       entities: [User, Todo, Products, ProductVariation],
-      synchronize: true,
+      synchronize: false,
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
